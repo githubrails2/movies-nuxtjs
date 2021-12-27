@@ -6,7 +6,7 @@
                 <span class="mini-heading">
                     Now Streaming
                 </span>
-                <h1><span>Now</span>Streaming</h1>
+                <h1><span>Now</span> Streaming</h1>
                 <a href="#movie-grid" class="button">View Movies</a>
             </div>
         </div>
@@ -15,12 +15,11 @@
 </template>
 <script>
 export default {
-    name: 'Hero',
-
+  name: 'Hero',
 }
 </script>
 <style lang="scss" scoped>
-    .hero {
+.hero {
   height: 400px;
   position: relative;
   @media (min-width: 750px) {
