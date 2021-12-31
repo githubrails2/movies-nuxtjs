@@ -5,12 +5,12 @@
     <!--Search-->
     <div class="container search">
       <input
-        @keyup.enter="$fetch"
         v-model.lazy="searchInput"
         type="text"
         placeholder="Search"
+        @keyup.enter="$fetch"
       />
-      <button @click="clearSearch" v-show="searchInput !== ''" class="button">
+      <button v-show="searchInput !== ''" class="button" @click="clearSearch">
         Clear Search
       </button>
     </div>
@@ -47,6 +47,7 @@
                 })
               }}
             </p>
+
             <NuxtLink
               class="button button-light"
               :to="{ name: 'movies-movieid', params: { movieid: movie.id } }"
@@ -114,7 +115,7 @@ export default {
   methods: {
     async getMovies() {
       const data = axios.get(
-        'https://api.themoviedb.org/3/movie/now_playing?api_key=3c85b5853b097aa7603015425961b699&language=en-US&page=1'
+        `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.NUXT_PUBLIC_API_KEY}&language=en-US&page=1`
       )
       const result = await data
       result.data.results.forEach((movie) => {
@@ -123,7 +124,7 @@ export default {
     },
     async searchMovies() {
       const data = axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=3c85b5853b097aa7603015425961b699&language=en-US&page=1&query=${this.searchInput}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NUXT_PUBLIC_API_KEY}&language=en-US&page=1&query=${this.searchInput}`
       )
       const result = await data
       result.data.results.forEach((movie) => {
