@@ -6,7 +6,7 @@
       <div class="movie-img">
         <img
           :src="`http://image.tmdb.org/t/p/w500${movie.poster_path}`"
-          alt=""
+          alt="{{movie.title}}"
         />
       </div>
       <div class="movie-content">
@@ -53,7 +53,11 @@ export default {
   async fetch() {
     await this.getSingleMovie()
   },
-
+  head() {
+    return {
+      title: this.movie.title,
+    }
+  },
   fetchDelay: 1000,
   methods: {
     async getSingleMovie() {

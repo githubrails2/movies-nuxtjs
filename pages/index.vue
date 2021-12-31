@@ -108,9 +108,21 @@ export default {
       await this.getMovies()
       return
     }
-
     await this.searchMovies()
   },
+  head() {
+    return {
+      title: 'Movie App',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Get all the latest streaming',
+        },
+      ],
+    }
+  },
+
   fetchDelay: 1000,
   methods: {
     async getMovies() {
